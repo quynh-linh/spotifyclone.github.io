@@ -193,7 +193,7 @@ const app = {
             }
         }
         // xử lý khi seek
-        progress.onchange = function(e){
+        progress.oninput = function(e){
             const progressPerson = e.target.value;
             const seekTime = (progressPerson/100) * audio_song.duration;
             audio_song.currentTime = seekTime;
@@ -328,9 +328,13 @@ const app = {
         progressVolume.value = this.config.volume;
         this.currentSong.id = this.config.id_song;
         audio_song.currentTime = this.config.currentTimeSong;
-        // // hiển thị trạng thái bài hát 
-        icon_repeat.classList.toggle('active-repeat',this.config.isRepeat);
-        icon_shuffle.classList.toggle('active-repeat',this.config.isRandom);
+        // // hiển thị trạng thái bài hát
+        if(this.config.isRandom === true){
+            icon_shuffle.classList.toggle('active-repeat',this.config.isRandom);
+        }
+        if(this.config.isRepeat === true){
+            icon_repeat.classList.toggle('active-repeat',this.config.isRepeat);
+        }
     },
     scrollSideBar : function(){
         const sideBarItems = $$('.sideBar-item');
