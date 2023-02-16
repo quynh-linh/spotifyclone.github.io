@@ -1,0 +1,419 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #222121;
+}
+*::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 5px;
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb
+{
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #818080;
+}
+main{
+    position: relative;
+    top: 80px;
+    padding-bottom: 80px;
+}
+/* Side Bar */
+.sideBar{
+    position: fixed;
+    background: black;
+    width: 240px;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+.listChoose .active{
+    color: white;
+}
+.listChoose{
+    padding: 25px 15px;
+}
+.listChoose div {
+    color: rgb(137, 137, 137);
+    font-size: 15px;
+    list-style: none;
+    padding: 10px 0px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.listChoose div:hover{
+    color: #fff;
+}
+.bar-item:hover{
+    color: #fff;
+}
+.bar-item{
+    color: #898989;
+    font-size: 20px;
+    margin-right: 20px;
+}
+/* Header */
+header{
+    left: 240px;
+    position: fixed;
+    background: rgba(10,10,10,0.6);
+    width: calc(100% - 240px);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgb(255,255,255,0.5);
+}
+.header-info{
+    display: flex;
+    align-items: center;
+    width: 260px;
+    background: black;
+    border-radius: 20px;
+    height: 45px;
+    justify-content: space-around;
+    margin-right: 10px;
+}
+.header-info img{
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    position: relative;
+    left: -2px;
+}
+.header-info p {
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+}
+.header-title{
+    color: white;
+    font-size: 30px;
+    padding-left: 10px;
+    font-weight: bold;
+    display: none;
+}
+/* Main */
+.main-content{
+    margin-left: 240px;
+    position: relative;
+}
+.list-music{
+    padding-top: 70px;
+    background-image: url('../image/banner2.jpg');
+    background-repeat: no-repeat;
+    background-position: center; /* Center the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+/* Play music */
+.play_music{
+    border-top: 1px solid #8d8585;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    height: 80px;
+    background: #222121;
+    width: 100%;
+}
+.info-music{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.play_music .info-music img{
+    width: 60px;
+    height: 70px;
+    padding: 7px;
+}
+.play_music .info-music a{
+    text-decoration: none;
+    padding: 0 10px;
+}
+.info-music .name-music{
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+.info-music .author-music{
+    font-size: 13px;
+    font-weight: 600;
+}
+.info-music i {
+    color: #fff;
+}
+.author-music{
+    color: #858585;
+}
+.adjust-volume{
+    display: flex;
+    align-items: center;
+}
+.adjust-volume i {
+    color: #858585;
+}
+.line-volume{
+    width: 100px;
+    background: #fff;
+    height: 5px;
+    border-radius: 5px;
+    margin: 10px;
+
+}
+.tool-music ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tool-music li {
+    list-style: none;
+    padding: 10px 30px;
+}
+.tool-music i {
+    color: #fff;
+}
+.time-music{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15px;
+}
+.time-music .line-music{
+    width: 400px;
+    height: 5px;
+    border-radius: 10px;
+    background: black;
+}
+.time-music .time-music-start,
+.time-music .time-music-end {
+    color: #cbcbcb;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 0 10px;
+}
+/* List Music */
+.title-description{
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.title-music{
+    font-size: 100px;
+    font-weight: bold;
+    margin-left: 15px;
+    color: rgb(255,255,255,0.9);
+}
+.title-two{
+    font-size: 100px;
+    font-weight: bold;
+    margin-left: 15px;
+    color: rgb(117 134 255);
+}
+.list-album{
+    margin-top: 15px;
+    padding: 0 20px;
+}
+.list-album table{
+    width: 100%;
+    border: none;
+}
+.list-album table thead th{
+    color: #c1c0c0;
+    font-size: 14px;
+    text-align: left;
+    padding: 10px 0;
+    border-bottom: 1px solid #5c5c5c;
+}
+.list-album table tbody td{
+    color: #c1c0c0;
+    font-size: 14px;
+    text-align: left;
+    padding: 10px 0;
+}
+.list-album-song{
+    display: flex;
+    align-items: center;
+}
+.list-album-song-img{
+    width: 50px;
+    height: 50px;
+}
+.list-album-song-info{
+    margin-left: 20px;
+}
+.list-album-song-info-author{
+    font-size: 13px;
+    color: #858585;
+    font-weight: 800;
+}
+.list-album-song-info-name{
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+}
+#tbody-table .fa-play{
+    font-size: 16px;
+    position: relative;
+    color: #fff;
+    font-weight: bold;
+    padding-left: 15px;
+    cursor: pointer;   
+}
+.image-gif{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+}
+.choose-like .icon-heart{
+    color: rgb(235, 63, 63);
+    cursor: pointer;
+}
+/*  */
+.tool-music .active-repeat{
+    color: #f97373;
+    cursor: pointer;
+}
+/* Tooltip CSS */
+[tooltip] {
+	position: relative;
+	cursor: pointer;
+}
+/* Applies to all tooltips */
+[tooltip]::before,
+[tooltip]::after {
+	text-transform: none;
+	font-size: 0.9em;
+	line-height: 1;
+	user-select: none;
+	pointer-events: none;
+	position: absolute;
+	display: none;
+	opacity: 0;
+}
+[tooltip]::before {
+	content: "";
+	border: 5px solid transparent;
+	z-index: 1001;
+}
+
+[tooltip]::after {
+	content: attr(tooltip);
+	/* magic! */
+	text-align: center;
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	min-width: 3em;
+	max-width: 21em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 1.3ch 1.5ch;
+	border-radius: 0.3ch;
+	box-shadow: 0 1em 2em -0.5em rgba(14, 19, 29, 0.35);
+	background: #302f2f;
+	color: #fff;
+	z-index: 1000;
+}
+
+/* Make the tooltips respond to hover */
+[tooltip]:hover::before,
+[tooltip]:hover::after {
+	display: block;
+}
+/* don't show empty tooltips */
+[tooltip=""]::before,
+[tooltip=""]::after {
+	display: none !important;
+}
+
+/* FLOW: UP */
+[tooltip]:not([flow])::before,
+[tooltip][flow^="up"]::before {
+	bottom: 100%;
+	border-bottom-width: 0;
+	border-top-color: #8d8585;
+}
+
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::after {
+	bottom: calc(100% + 5px);
+}
+
+[tooltip]:not([flow])::before,
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::before,
+[tooltip][flow^="up"]::after {
+	left: 50%;
+	transform: translate(-50%, -0.5em);
+}
+/* FX All The Things */
+[tooltip]:not([flow]):hover::before,
+[tooltip]:not([flow]):hover::after,
+[tooltip][flow^="up"]:hover::before,
+[tooltip][flow^="up"]:hover::after{
+  animation: tooltips-vert 300ms ease-out forwards;
+}
+/* Make the tooltips respond to focus */
+[tooltip]:focus::before,
+[tooltip]:focus::after {
+  display: block;
+}
+/* don't show empty tooltips */
+[tooltip=""]::before,
+[tooltip=""]::after {
+  display: none !important;
+}
+/* FLOW: UP */
+[tooltip]:not([flow])::before,
+[tooltip][flow^="up"]::before {
+  bottom: 100%;
+  border-bottom-width: 0;
+  border-top-color: #8d8585;
+}
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::after {
+  bottom: calc(100% + 5px);
+}
+[tooltip]:not([flow])::before,
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::before,
+[tooltip][flow^="up"]::after {
+  left: 50%;
+  transform: translate(-50%, -0.5em);
+}
+/* KEYFRAMES */
+@keyframes tooltips-vert {
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes tooltips-horz {
+  to {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+/* FX All The Things */
+[tooltip]:not([flow]):focus::before,
+[tooltip]:not([flow]):focus::after,
+[tooltip][flow^="up"]:focus::before,
+[tooltip][flow^="up"]:focus::after{
+  animation: tooltips-vert 300ms ease-out forwards;
+}

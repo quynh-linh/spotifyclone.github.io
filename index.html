@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font awesome  -->
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font family  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Spotify</title>
+</head>
+<body>
+    <div style=" position: relative;bottom: 80px;">
+        <div class="sideBar">
+            <div class="listChoose">
+                <div class="sideBar-item active">
+                    <i class="bar-item fa-regular fa-house"></i>
+                    Home
+                </div>
+                <div class="sideBar-item">
+                    <i class="bar-item fa-solid fa-magnifying-glass"></i>
+                    Search
+                </div>
+                <div class="sideBar-item">
+                    <i class="bar-item fa-regular fa-books"></i>
+                    Your library
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <header>
+                <div class="header-title">Sky Tour</div>
+                <div class="header-info">
+                    <img src="https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/327898676_1027671731956043_2947151331630452073_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=hZHK4rbarLEAX8Sjwlc&_nc_ht=scontent.fdad3-1.fna&oh=00_AfCpkRXuQ8j8B3xm5hXbgJWOydmm-RGlcMdTIEvqOL181Q&oe=63EABFDF" alt="">
+                    <p>Nguyễn Thanh Quỳnh Linh</p>
+                    <i style="color: #fff;" class="fa-solid fa-chevron-down"></i>
+                </div>
+            </header>
+            <main>
+                <div class="list-music">
+                    <p class="title-description">PUCLIC PLAYLIST</p>
+                    <span class="title-music">Sky </span>
+                    <span class="title-two" >Tour</span>
+                </div>
+                <div class="list-album">
+                    <table id="table_songs" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">#</th>
+                                <th style="width: 30%;">TITLE</th>
+                                <th style="width: 30%;">ALBUM</th>
+                                <th style="width: 30%;">DATE ADDED</th>
+                                <th style="width: 5%;"><i class="fa-solid fa-clock"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-table">
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="play_music">
+        <div class="info-music">
+            <img src="" alt="">
+            <div>
+                <a href="" class="name-music">Nơi này có anh</a><br>
+                <a href="" class="author-music">Sơn Tùng MTP</a>
+            </div>
+            <div class="choose-like">
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+        <div class="adjust-music">
+            <div class="tool-music">
+                <ul>
+                    <li tooltip="Enable Shuffle" flow="up">
+                        <i class="fa-solid fa-shuffle" ></i>
+                    </li>
+                    <li tooltip="Previous" flow="up"><i  class="fa-solid fa-backward-step"></i></li>
+                    <li>
+                        <i  style="background: black;padding: 10px;border-radius: 50%;" class="fa-solid fa-play"></i></li>
+                    <li  tooltip="Next" flow="up"><i class="fa-solid fa-forward-step"></i></li>
+                    <li tooltip="Enable repeat" flow="up" class=""><i class="fa-solid fa-repeat"></i></li>
+                </ul>
+                <audio src="" class="audio-music"></audio>
+            </div>
+            <div class="time-music">
+                <span class="time-music-start">0:00</span>
+                <input type="range" value="0" step="1" min="0" max="100" class="line-music"></input>
+                <span class="time-music-end">4:00</span>
+            </div>
+        </div>
+        <div class="adjust-volume">
+            <i class="fa-solid fa-bullhorn"></i>
+            <input type="range" value="1" step="0.1" min="0" max="1" class="line-volume"></input>
+        </div>
+    </div>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+1/ Xây dựng chức năng render song
+2/ Scroll top
+3/ Play / Pause / Seek
+4/ CD Rotate
+5/ Next / Previous
+6/ Random
+7/ Next / Repeat when ended
+8/ Active song
+9/ Scroll active into view
+10/ Play when song click 
