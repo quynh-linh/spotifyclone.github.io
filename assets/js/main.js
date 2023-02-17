@@ -121,15 +121,12 @@ const app = {
         document.onscroll = function(){       
             // handle when scrolling
             let header_Title = $('.header-title');
-            let header_thead = $('#table_songs thead');
-            let header_thead_tr = $('#table_songs thead tr');
             if(window.scrollY > 150){
                 header.style.backgroundColor = 'rgba(10,10,10)';
                 header_Title.style.display = 'block';
                 header.style.justifyContent = 'space-between';
             }else{
                 header.style.justifyContent = 'end';
-                header_thead.style.backgroundColor = '#222121';
                 header.style.backgroundColor = 'rgba(10,10,10,0.6)';
                 header_Title.style.display = 'none';
             }
@@ -180,16 +177,13 @@ const app = {
                     }
                 }
             }
-            //
-            
         }
         // when the tempo of the music door changes
         audio_song.ontimeupdate = function(){
             if(audio_song.duration){
-                progress.max = audio_song.duration;
                 progress.value =  Math.floor((audio_song.currentTime/audio_song.duration)*100);
-                time_songs.textContent = _this.setMinutesSong();
                 step_song.textContent = _this.getMinutesSong(progress.value);
+                time_songs.textContent = _this.setMinutesSong();
             }
         }
         // handle when seek
@@ -197,7 +191,7 @@ const app = {
             const progressPerson = e.target.value;
             const seekTime = (progressPerson/100) * audio_song.duration;
             audio_song.currentTime = seekTime;
-            step_song.textContent = _this.getMinutesSong(progressPerson.value);
+            step_song.textContent = _this.getMinutesSong();
         }
         // handle the loudness of the sound
         progressVolume.onchange = function(e){
@@ -231,7 +225,7 @@ const app = {
         };
         // handle button repeat
         icon_repeat.onclick = function(){
-            _this.isRepeat =!_this.isRepeat;
+            _this.isRepeat =!_this.isRepeat;       
             _this.setConfig('isRepeat',_this.isRepeat);
             this.classList.toggle('active-repeat',_this.isRepeat);
         }
@@ -250,7 +244,8 @@ const app = {
         const seconds = Math.floor(time % 60).toString().padStart(2,'0');
         return finalTime = minutes + ':' + seconds;
     },
-    getMinutesSong : function(time){
+    getMinutesSong : function(){
+        const time = audio_song.currentTime;
         const minutes = Math.floor(time % 3600 / 60).toString().padStart(2,'0');
         const seconds = Math.floor(time % 60).toString().padStart(2,'0');
         return finalTime = minutes + ':' + seconds;
@@ -316,9 +311,8 @@ const app = {
         author_song.textContent = this.currentSong.author;
         img_song.src = this.currentSong.image;
         audio_song.src = this.currentSong.path;
-        console.log(audio_song.duration);
     },
-    loadConfig : function(){
+    loadConfigSong : function(){
         this.isRandom = this.config.isRandom;
         this.isRepeat = this.config.isRepeat;
         name_song.textContent = this.config.name;
@@ -328,13 +322,21 @@ const app = {
         progressVolume.value = this.config.volume;
         this.currentSong.id = this.config.id_song;
         audio_song.currentTime = this.config.currentTimeSong;
-        // show song status
+    },
+    loadConfig : function(){
         if(this.config.isRandom === true){
-            icon_shuffle.classList.toggle('active-repeat',this.config.isRandom);
+            this.isRandom = this.config.isRandom;
+           
+        } else {
+            this.isRandom = false;
         }
         if(this.config.isRepeat === true){
-            icon_repeat.classList.toggle('active-repeat',this.config.isRepeat);
+            this.isRepeat = this.config.isRepeat;
+        } else {
+            this.isRepeat = false;
         }
+        icon_shuffle.classList.toggle('active-repeat',this.isRandom);
+        icon_repeat.classList.toggle('active-repeat',this.isRepeat);
     },
     scrollSideBar : function(){
         const sideBarItems = $$('.sideBar-item');
@@ -372,15 +374,15 @@ const app = {
         this.render();
         // define methods for Object
         this.defineProperties();
-         // listen and handle events
-         this.handleEvents();
+        // listen and handle events
+        this.handleEvents();
+        // get the playlist load the playlist
+        this.loadCurrentSong();
+        this.loadConfig();
         if(this.config.isConfig){
             // load config out
-            this.loadConfig();
-        } else {
-             // get the playlist load the playlist
-            this.loadCurrentSong();   
-        }
+            this.loadConfigSong();
+        } 
         this.chooseSongs();
         // scroll sideBar
         this.scrollSideBar();
