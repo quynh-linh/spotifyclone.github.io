@@ -119,7 +119,7 @@ const app = {
     handleEvents : function(){
         const _this = this;
         document.onscroll = function(){       
-            // xử lý khi cuộn scroll
+            // handle when scrolling
             let header_Title = $('.header-title');
             let header_thead = $('#table_songs thead');
             let header_thead_tr = $('#table_songs thead tr');
@@ -134,7 +134,7 @@ const app = {
                 header_Title.style.display = 'none';
             }
         };
-        // xử lý khi người dùng di chuột thêm song vào bài hát yêu thích
+        // handle when user hovers add song to favorite song
         choose_like.onmouseover = function(){
             this.innerHTML = '<i class="fa-solid fa-heart"></i>';
             $('.choose-like i').classList.add('icon-heart');
@@ -143,7 +143,7 @@ const app = {
             this.innerHTML = '<i class="fa-regular fa-heart"></i>';
             $('.choose-like i').classList.remove('icon-heart');
         };
-        // xử lý khi click play 
+        // handling when clicking play song
         play_song.onclick = function(){     
             if(_this.isPlaying){
                 audio_song.pause();
@@ -151,14 +151,14 @@ const app = {
                 audio_song.play();
             }
         }
-        // khi song onPlay()
+        // when playing onPlay()
         audio_song.onplay = function(){
             _this.isPlaying = true;
             play_song.classList.add('fa-pause');
             play_song.classList.remove('fa-play');
             _this.chooseSongs();
         }
-        // khi người dùng nhấn dừng bài hát
+        // when user press stop song
         audio_song.onpause = function(){
             _this.isPlaying = false;
             _this.isConfig = true;
@@ -183,7 +183,7 @@ const app = {
             //
             
         }
-        // khi tiến độ cửa nhạc thay đổi
+        // when the tempo of the music door changes
         audio_song.ontimeupdate = function(){
             if(audio_song.duration){
                 progress.max = audio_song.duration;
@@ -192,20 +192,20 @@ const app = {
                 step_song.textContent = _this.getMinutesSong(progress.value);
             }
         }
-        // xử lý khi seek
+        // handle when seek
         progress.oninput = function(e){
             const progressPerson = e.target.value;
             const seekTime = (progressPerson/100) * audio_song.duration;
             audio_song.currentTime = seekTime;
             step_song.textContent = _this.getMinutesSong(progressPerson.value);
         }
-        // xử lý độ to nhỏ của âm thanh
+        // handle the loudness of the sound
         progressVolume.onchange = function(e){
             const progressPersonVolume = e.target.value;
             audio_song.volume = progressPersonVolume;
             _this.setConfig('volume',progressPersonVolume);
         }
-        // xử lý khi người dùng click next song
+        // handling when user clicks next song
         next_song.onclick = function(){
             if(_this.isRandom){
                 _this.playingRanDomSongs();
@@ -214,7 +214,7 @@ const app = {
             }
             audio_song.play();
         }
-        // xử lý khi người dùng click prev song
+        // handle when user clicks prev song
         prev_song.onclick = function(){
             if(_this.isRandom){
                 _this.playingRanDomSongs();
@@ -223,19 +223,19 @@ const app = {
             }
             audio_song.play();
         }
-        // xử lý random() songs
+        // handle random() songs
         icon_shuffle.onclick = function(){
             _this.isRandom = !_this.isRandom;
             _this.setConfig('isRandom',_this.isRandom);
             this.classList.toggle('active-repeat',_this.isRandom);
         };
-        // xử lý button repeat
+        // handle button repeat
         icon_repeat.onclick = function(){
             _this.isRepeat =!_this.isRepeat;
             _this.setConfig('isRepeat',_this.isRepeat);
             this.classList.toggle('active-repeat',_this.isRepeat);
         }
-        // xử lý khi bài hát kết thúc
+        // handle when the song ends
         audio_song.onended = function(){
             if(_this.isRepeat){
                 audio_song.play();
@@ -266,9 +266,9 @@ const app = {
         let _this = this;
         for (const index in list_song) {
             if(list_song.hasOwnProperty(index)){
-                // kiểm tra điều kiện 
-                // 1. Nhạc phải được phát
-                // 2. Id của bài hát phải === với id của danh sách chứa bài hát
+                // check condition
+                // 1.Music must be played
+                // 2. The id of the song must === with the id of the playlist containing the song
                 if (this.isPlaying && this.currentSong.id === Number.parseInt(list_song[index].children[0].textContent) ) {
                     list_song[index].children[0].innerHTML = '<img class="image-gif" src="./assets/image/Nt6v.gif" alt="">'
                     list_song[index].onmouseover = function(){
@@ -328,7 +328,7 @@ const app = {
         progressVolume.value = this.config.volume;
         this.currentSong.id = this.config.id_song;
         audio_song.currentTime = this.config.currentTimeSong;
-        // // hiển thị trạng thái bài hát
+        // show song status
         if(this.config.isRandom === true){
             icon_shuffle.classList.toggle('active-repeat',this.config.isRandom);
         }
@@ -368,20 +368,19 @@ const app = {
         this.loadCurrentSong();
     },
     start : function(){
-        // lấy ra danh sách nhạc 
+        // get out playlist
         this.render();
-        // định nghĩa các phương thức cho Object
+        // define methods for Object
         this.defineProperties();
-         // lắng nghe và xử lý các sự kiện
+         // listen and handle events
          this.handleEvents();
         if(this.config.isConfig){
-            // load config ra
+            // load config out
             this.loadConfig();
         } else {
-             // lấy danh sách nhạc load ra list nhạc
+             // get the playlist load the playlist
             this.loadCurrentSong();   
         }
-        // 
         this.chooseSongs();
         // scroll sideBar
         this.scrollSideBar();
